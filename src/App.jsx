@@ -1,4 +1,6 @@
-import { Coffee, ArrowRight, MapPin, Clock } from "lucide-react";
+import { Coffee, ArrowRight, MapPin, Clock, User } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useAuth } from "./context/AuthContext";
 
 function InstagramIcon(props) {
   return (
@@ -62,6 +64,8 @@ const socials = [
 ];
 
 function Navbar() {
+  const { token } = useAuth();
+
   return (
     <header className="absolute inset-x-0 top-0 z-10">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 md:px-10">
@@ -69,18 +73,36 @@ function Navbar() {
           <Coffee className="h-5 w-5" strokeWidth={1.5} />
           <span className="font-['Fraunces',serif] text-xl tracking-tight">Maison Mocha</span>
         </a>
-        <ul className="flex items-center gap-6 text-sm text-[#6b5444] sm:gap-10">
-          {links.map((link) => (
-            <li key={link}>
-              <a
-                href={`#${link.toLowerCase()}`}
-                className="relative pb-1 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-[#3b2a20] after:transition-all after:duration-300 hover:text-[#3b2a20] hover:after:w-full"
-              >
-                {link}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center gap-6 text-sm text-[#6b5444] sm:gap-10">
+          <ul className="flex items-center gap-6 sm:gap-10">
+            {links.map((link) => (
+              <li key={link}>
+                <a
+                  href={`#${link.toLowerCase()}`}
+                  className="relative pb-1 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-[#3b2a20] after:transition-all after:duration-300 hover:text-[#3b2a20] hover:after:w-full"
+                >
+                  {link}
+                </a>
+              </li>
+            ))}
+          </ul>
+          {token ? (
+            <Link
+              to="/dashboard"
+              className="flex items-center gap-2 rounded-full bg-[#3b2a20] px-5 py-2.5 text-sm text-[#f7f1e8] transition-all duration-300 hover:bg-[#2a1b13] hover:shadow-md hover:shadow-[#3b2a20]/20"
+            >
+              <User className="h-4 w-4" strokeWidth={1.5} />
+              Dashboard
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              className="flex items-center gap-2 rounded-full bg-[#3b2a20] px-5 py-2.5 text-sm text-[#f7f1e8] transition-all duration-300 hover:bg-[#2a1b13] hover:shadow-md hover:shadow-[#3b2a20]/20"
+            >
+              Sign in
+            </Link>
+          )}
+        </div>
       </nav>
     </header>
   );
