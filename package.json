@@ -11,13 +11,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.5",
-    "bcrypt": "^6.0.0",
-    "cors": "^2.8.6",
-    "dotenv": "^18.0.10",
-    "express": "^5.3.0",
-    "jsonwebtoken": "^9.0.3",
     "lucide-react": "^1.70.0",
-    "mongoose": "^9.12.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-router-dom": "^7.18.5"
@@ -36,5 +30,6 @@
     "postcss": "^8.5.32",
     "tailwindcss": "^4.3.5",
     "vite": "^8.3.6"
-  }
+  },
+  "packageManager": "pnpm@11.11.0+sha512.4463f65fd80ed80d69bc1d4bf163ee94f605c7380fc318bb5b2ebe15f8cd12d49c51a4d59e951b401e764d3b6ca751cbf51bc50ed7001a6bcb4935e684c34882"
 }
